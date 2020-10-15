@@ -14,9 +14,13 @@ import MoreVertical from "../assets/icons/MoreVertical";
 import NavigationPopout from "./NavigationPopout";
 
 const Navigation = () => {
+    const [show, setShow] = useState(false);
+    const hide = () => {
+        setShow(false);
+    };
     return (
         <View style={styles.container}>
-            <NavigationPopout />
+            <NavigationPopout show={show} hide={hide} />
             <View
                 style={{
                     flex: 1,
