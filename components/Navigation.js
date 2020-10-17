@@ -15,20 +15,15 @@ import NavigationPopout from "./NavigationPopout";
 
 const Navigation = () => {
     const [show, setShow] = useState(false);
-    const hide = () => {
-        setShow(false);
-    };
     return (
         <View style={styles.container}>
-            <NavigationPopout show={show} hide={hide} />
+            <NavigationPopout show={{ show, setShow }} />
             <View
                 style={{
                     flex: 1,
                     flexDirection: "row",
                     flexWrap: "nowrap",
-
                     borderRadius: 12,
-
                     padding: 6,
                     // borderColor: "#185DC6",
                 }}
