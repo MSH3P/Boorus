@@ -1,18 +1,9 @@
 import React from "react";
-import {
-    Image,
-    StyleSheet,
-    Text,
-    SafeAreaView,
-    Platform,
-    StatusBar,
-    View,
-} from "react-native";
+import { StyleSheet, SafeAreaView, StatusBar } from "react-native";
 
 import Content from "./components/Content.js";
 import Footer from "./components/Footer.js";
 import Navigation from "./components/Navigation.js";
-import NavigationPopout from "./components/NavigationPopout.js";
 const App = () => {
     return (
         <SafeAreaView style={styles.container}>
