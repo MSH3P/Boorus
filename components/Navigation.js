@@ -1,40 +1,24 @@
-import { StatusBar } from "expo-status-bar";
 import React, { useState } from "react";
-import {
-    Pressable,
-    StyleSheet,
-    Text,
-    View,
-    TextInput,
-    Button,
-    Image,
-} from "react-native";
+import { Pressable, StyleSheet, View, TextInput } from "react-native";
 import Menu from "../assets/icons/Menu";
 import MoreVertical from "../assets/icons/MoreVertical";
 import NavigationPopout from "./NavigationPopout";
 
-const Navigation = () => {
+const Navigation = (props) => {
     const [show, setShow] = useState(false);
     return (
         <View style={styles.container}>
             <NavigationPopout show={{ show, setShow }} />
-            <View
-                style={{
-                    flex: 1,
-                    flexDirection: "row",
-                    flexWrap: "nowrap",
-                    borderRadius: 12,
-                    padding: 6,
-                    // borderColor: "#185DC6",
-                }}
-            >
+            <View style={styles.inner}>
                 <Pressable
-                    onPress={() => {}}
+                    onPress={() => {
+                        props.navigation.navigate("Details");
+                    }}
                     android_ripple={{
                         color: "blue",
                         borderless: "false",
                     }}
-                    style={{ justifyContent: "center" }}
+                    style={styles.pressable}
                 >
                     <Menu />
                 </Pressable>
@@ -42,7 +26,7 @@ const Navigation = () => {
                     placeholder="Search..."
                     placeholderTextColor="#6F6B68"
                     style={styles.textInput}
-                ></TextInput>
+                />
                 <Pressable
                     onPress={() => {
                         setShow(true);
@@ -51,7 +35,7 @@ const Navigation = () => {
                         color: "blue",
                         borderless: "false",
                     }}
-                    style={{ justifyContent: "center" }}
+                    style={styles.pressable}
                 >
                     <MoreVertical />
                 </Pressable>
@@ -64,6 +48,14 @@ const styles = StyleSheet.create({
     container: {
         backgroundColor: "#1c2731",
         height: 60,
+    },
+    pressable: { justifyContent: "center" },
+    inner: {
+        flex: 1,
+        flexDirection: "row",
+        flexWrap: "nowrap",
+        borderRadius: 12,
+        padding: 6,
     },
     textInput: {
         width: "85%",

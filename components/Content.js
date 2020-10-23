@@ -1,18 +1,5 @@
-import { StatusBar } from "expo-status-bar";
 import React from "react";
-import {
-    Pressable,
-    StyleSheet,
-    Text,
-    View,
-    TextInput,
-    Button,
-    Image,
-    ScrollView,
-} from "react-native";
-import Menu from "../assets/icons/Menu";
-import MoreVertical from "../assets/icons/MoreVertical";
-
+import { StyleSheet, ScrollView } from "react-native";
 const Content = () => {
     return <ScrollView></ScrollView>;
 };

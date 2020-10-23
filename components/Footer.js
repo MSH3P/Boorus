@@ -1,21 +1,10 @@
-import { StatusBar } from "expo-status-bar";
 import React from "react";
-import {
-    Pressable,
-    StyleSheet,
-    Text,
-    View,
-    TextInput,
-    Button,
-    Image,
-} from "react-native";
-import Menu from "../assets/icons/Menu";
-import MoreVertical from "../assets/icons/MoreVertical";
+import { StyleSheet, Text, View } from "react-native";
 
 const Footer = () => {
     return (
         <View style={styles.container}>
-            <Text style={{ color: "white" }}></Text>
+            <Text style={{ color: "white" }} />
         </View>
     );
 };

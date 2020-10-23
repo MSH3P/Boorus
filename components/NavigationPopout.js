@@ -1,21 +1,13 @@
-import { StatusBar } from "expo-status-bar";
-import React, { useState } from "react";
-import { render } from "react-dom";
+import React from "react";
 import {
-    Pressable,
     StyleSheet,
     Text,
     View,
-    TextInput,
-    Button,
-    Image,
     Modal,
     TouchableOpacity,
     TouchableHighlight,
     TouchableWithoutFeedback,
 } from "react-native";
-import Menu from "../assets/icons/Menu";
-import MoreVertical from "../assets/icons/MoreVertical";
 
 const NavigationPopout = (props) => {
     const show = props.show.show;
@@ -31,40 +23,22 @@ const NavigationPopout = (props) => {
                 onPress={() => {
                     setShow(false);
                 }}
-                style={{
-                    backgroundColor: "transparent",
-                    height: "100%",
-                    height: "100%",
-                }}
+                style={styles.opacity}
             >
                 <TouchableWithoutFeedback>
                     <View style={styles.container}>
                         <View>
                             <Text style={{ color: "white" }}>Modal</Text>
                         </View>
-                        <View
-                            style={{
-                                flexDirection: "row",
-                                flexWrap: "nowrap",
-                                justifyContent: "space-evenly",
-                            }}
-                        >
+                        <View style={styles.inner}>
                             <TouchableHighlight
-                                style={{
-                                    backgroundColor: "red",
-                                    borderRadius: 5,
-                                    padding: 5,
-                                }}
+                                style={styles.highlight}
                                 onPress={() => {}}
                             >
                                 <Text>OK</Text>
                             </TouchableHighlight>
                             <TouchableHighlight
-                                style={{
-                                    backgroundColor: "red",
-                                    borderRadius: 5,
-                                    padding: 5,
-                                }}
+                                style={styles.highlight}
                                 onPress={() => {
                                     setShow(false);
                                 }}
@@ -87,6 +61,21 @@ const styles = StyleSheet.create({
         marginRight: 10,
         borderRadius: 5,
         padding: 10,
+    },
+    inner: {
+        flexDirection: "row",
+        flexWrap: "nowrap",
+        justifyContent: "space-evenly",
+    },
+    opacity: {
+        backgroundColor: "transparent",
+        height: "100%",
+        height: "100%",
+    },
+    highlight: {
+        backgroundColor: "red",
+        borderRadius: 5,
+        padding: 5,
     },
     contents: {
         padding: 10,
