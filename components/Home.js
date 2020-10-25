@@ -1,6 +1,6 @@
 import React from "react";
 import {} from "react-navigation";
-import { SafeAreaView, StyleSheet } from "react-native";
+import { View, SafeAreaView, StyleSheet } from "react-native";
 import Content from "./Content.js";
 import Footer from "./Footer.js";
 import Navigation from "./Navigation.js";
@@ -18,7 +18,6 @@ const Home = ({ navigation }) => {
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        flexDirection: "column",
         backgroundColor: "#0E1419",
     },
 });

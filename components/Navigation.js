@@ -12,7 +12,7 @@ const Navigation = (props) => {
             <View style={styles.inner}>
                 <Pressable
                     onPress={() => {
-                        props.navigation.navigate("Details");
+                        props.navigation.openDrawer();
                     }}
                     android_ripple={{
                         color: "blue",

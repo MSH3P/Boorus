@@ -12,7 +12,7 @@ const Footer = () => {
 const styles = StyleSheet.create({
     container: {
         backgroundColor: "#1c2731",
-        height: 60,
+        height: 50,
     },
 });
 
