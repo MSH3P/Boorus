@@ -12,6 +12,11 @@ import {
 import Home from "./components/Home.js";
 import DrawerContent from "./components/Drawer/DrawerContent.js";
 
+import EyeOff from "./assets/icons/EyeOff.js";
+import User from "./assets/icons/User.js";
+import Star from "./assets/icons/Star.js";
+import Rewind from "./assets/icons/Rewind.js";
+
 const Drawer = createDrawerNavigator();
 
 const App = () => {
@@ -25,13 +30,39 @@ const App = () => {
                 }}
                 drawerContent={(props) => <DrawerContent {...props} />}
             >
-                <Drawer.Screen name="Account" component={Home}></Drawer.Screen>
                 <Drawer.Screen
+                    options={{
+                        drawerIcon: () => {
+                            return <User />;
+                        },
+                    }}
+                    name="Account"
+                    component={Home}
+                ></Drawer.Screen>
+                <Drawer.Screen
+                    options={{
+                        drawerIcon: () => {
+                            return <Star />;
+                        },
+                    }}
                     name="Favorites"
                     component={Home}
                 ></Drawer.Screen>
-                <Drawer.Screen name="History" component={Home}></Drawer.Screen>
                 <Drawer.Screen
+                    options={{
+                        drawerIcon: () => {
+                            return <Rewind />;
+                        },
+                    }}
+                    name="History"
+                    component={Home}
+                ></Drawer.Screen>
+                <Drawer.Screen
+                    options={{
+                        drawerIcon: () => {
+                            return <EyeOff />;
+                        },
+                    }}
                     name="Tag Blacklist"
                     component={Home}
                 ></Drawer.Screen>

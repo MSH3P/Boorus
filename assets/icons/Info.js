@@ -13,7 +13,6 @@ function SvgComponent(props) {
             strokeLinecap="round"
             strokeLinejoin="round"
             className="prefix__feather prefix__feather-info"
-            {...props}
         >
             <Circle cx={12} cy={12} r={10} />
             <Path d="M12 16v-4M12 8h.01" />
