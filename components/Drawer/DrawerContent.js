@@ -3,8 +3,7 @@ import {
     DrawerItemList,
 } from "@react-navigation/drawer";
 import React from "react";
-import { View, StyleSheet, Text } from "react-native";
-import { Directions } from "react-native-gesture-handler";
+import { View, StyleSheet } from "react-native";
 import DrawerFooter from "./DrawerFooter";
 import DrawerHeader from "./DrawerHeader";
 
