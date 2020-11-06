@@ -6,20 +6,20 @@ import Footer from "./Footer.js";
 import Navigation from "./Navigation.js";
 
 const Home = ({ navigation }) => {
-    return (
-        <SafeAreaView style={styles.container}>
-            <Navigation navigation={navigation} />
-            <Content />
-            <Footer />
-        </SafeAreaView>
-    );
+  return (
+    <SafeAreaView style={styles.container}>
+      <Navigation navigation={navigation} />
+      <Content />
+      <Footer />
+    </SafeAreaView>
+  );
 };
 
 const styles = StyleSheet.create({
-    container: {
-        flex: 1,
-        backgroundColor: "#0E1419",
-    },
+  container: {
+    flex: 1,
+    backgroundColor: "#0E1419",
+  },
 });
 
 export default Home;
