@@ -1,4 +1,4 @@
-const { Text, View } = require("react-native");
+const { Text, View, Image } = require("react-native");
 import React from "react";
 import { Button, Pressable, StyleSheet } from "react-native";
 import ArrowLeft from "../../assets/icons/ArrowLeft";

@@ -1,17 +1,15 @@
 import "react-native-gesture-handler";
 import * as React from "react";
-import { StatusBar, View, Text } from "react-native";
+import { StatusBar, View, Text, StyleSheet } from "react-native";
 
 import { NavigationContainer } from "@react-navigation/native";
-import { createStackNavigator } from "@react-navigation/stack";
 import DrawerContent from "./components/Drawer/DrawerContent";
 import { createDrawerNavigator } from "@react-navigation/drawer";
-const Stack = createStackNavigator();
+
 const Drawer = createDrawerNavigator();
 import SettingsComponent from "./components/Settings/SettingsComponent";
 import AboutComponent from "./components/About/AboutComponent";
-import Home from "./components/Home";
-import { StyleSheet } from "react-native";
+import Home from "./components/Home/Home";
 const App = () => {
   return (
     <NavigationContainer>

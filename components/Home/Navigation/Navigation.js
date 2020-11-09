@@ -1,11 +1,13 @@
 import React, { useState } from "react";
 import { Pressable, StyleSheet, View, TextInput } from "react-native";
-import Menu from "../assets/icons/Menu";
-import MoreVertical from "../assets/icons/MoreVertical";
+import Menu from "../../../assets/icons/Menu";
+import MoreVertical from "../../../assets/icons/MoreVertical";
 import NavigationPopout from "./NavigationPopout";
 
 const Navigation = (props) => {
   const [show, setShow] = useState(false);
+  const [text, setText] = useState("");
+
   return (
     <View style={styles.container}>
       <NavigationPopout show={{ show, setShow }} />
@@ -26,6 +28,8 @@ const Navigation = (props) => {
           placeholder="Search..."
           placeholderTextColor="#6F6B68"
           style={styles.textInput}
+          onSubmitEditing={() => props.setSearch(text)}
+          onChangeText={(text) => setText(text)}
         />
         <Pressable
           onPress={() => {
