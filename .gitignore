@@ -12,3 +12,4 @@ assets/feather/*
 .vscode/
 # macOS
 .DS_Store
+local*
