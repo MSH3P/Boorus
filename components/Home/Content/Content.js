@@ -1,5 +1,13 @@
 import React, { useState, useEffect } from "react";
-import { StyleSheet, ScrollView, Text, View, Image } from "react-native";
+import {
+  StyleSheet,
+  ScrollView,
+  Text,
+  View,
+  Image,
+  Pressable,
+  useWindowDimensions,
+} from "react-native";
 import { website, tag } from "../../../local/website";
 
 const getContent = (search) => {
@@ -20,15 +28,28 @@ const getContent = (search) => {
 
 const Content = (props) => {
   const [data, setData] = useState("");
+  const window = useWindowDimensions();
+
   useEffect(() => {
     getContent(props.search).then((sifted) => {
       const ContentItems = sifted.map((object) => {
         return (
-          <View style={styles.viewBox}>
-            <Image
-              style={styles.viewBox}
-              source={{ uri: object.thumbnail }}
-            ></Image>
+          <View
+            style={{
+              height: 150,
+              width: 150,
+              overflow: "hidden",
+              backgroundColor: "#1c2731",
+              borderRadius: 10,
+              marginBottom: 5,
+            }}
+          >
+            <Pressable onPress={() => alert("test")}>
+              <Image
+                style={styles.viewBox}
+                source={{ uri: object.thumbnail }}
+              />
+            </Pressable>
           </View>
         );
       });
