@@ -9,7 +9,7 @@ import { createDrawerNavigator } from "@react-navigation/drawer";
 const Drawer = createDrawerNavigator();
 import SettingsComponent from "./components/Settings/SettingsComponent";
 import AboutComponent from "./components/About/AboutComponent";
-import Home from "./components/Home/Home";
+import Home from "./components/Home/Page";
 const App = () => {
   return (
     <NavigationContainer>
@@ -17,6 +17,7 @@ const App = () => {
       <Drawer.Navigator
         drawerStyle={styles.drawerStyle}
         drawerContent={(props) => <DrawerContent {...props} />}
+        screenOptions={{ headerShown: false }}
       >
         <Drawer.Screen name="Account" component={Home} />
         <Drawer.Screen name="Favorites" component={Home} />

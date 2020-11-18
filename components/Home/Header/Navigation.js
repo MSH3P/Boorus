@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { Pressable, StyleSheet, View, TextInput } from "react-native";
 import Menu from "../../../assets/icons/Menu";
 import MoreVertical from "../../../assets/icons/MoreVertical";
-import NavigationPopout from "./NavigationPopout";
+import NavigationModal from "./NavigationModal";
 
 const Navigation = (props) => {
   const [show, setShow] = useState(false);
@@ -10,7 +10,7 @@ const Navigation = (props) => {
 
   return (
     <View style={styles.container}>
-      <NavigationPopout show={{ show, setShow }} />
+      <NavigationModal show={{ show, setShow }} />
       <View style={styles.inner}>
         <Pressable
           onPress={() => {

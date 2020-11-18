@@ -18,7 +18,7 @@ const getContent = (search) => {
     .then((response) => response.json())
     .then((json) => {
       return json.map((objects) => {
-        return { thumbnail: objects.preview_url };
+        return { thumbnail: objects.preview_url, id: objects.id };
       });
     })
     .catch((error) => {
@@ -43,6 +43,7 @@ const Content = (props) => {
               borderRadius: 10,
               marginBottom: 5,
             }}
+            key={object.id}
           >
             <Pressable onPress={() => alert("test")}>
               <Image

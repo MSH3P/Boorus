@@ -9,7 +9,7 @@ import {
   TouchableWithoutFeedback,
 } from "react-native";
 
-const NavigationPopout = (props) => {
+const NavigationModal = (props) => {
   const show = props.show.show;
   const setShow = props.show.setShow;
   return (
@@ -79,4 +79,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default NavigationPopout;
+export default NavigationModal;

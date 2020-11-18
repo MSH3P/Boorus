@@ -1,12 +1,15 @@
 import React, { useState } from "react";
 import {} from "react-navigation";
 import { SafeAreaView, StyleSheet } from "react-native";
+import { NavigationContainer } from "@react-navigation/native";
+import { createStackNavigator } from "@react-navigation/stack";
+const Stack = createStackNavigator();
 
 import Content from "./Content/Content";
 import Footer from "./Footer/Footer/";
-import Navigation from "./Navigation/Navigation";
-
-const Home = ({ navigation }) => {
+import Navigation from "./Header/Navigation";
+Navigation;
+const Page = ({ navigation }) => {
   const [search, setSearch] = useState("");
 
   return (
@@ -25,4 +28,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default Home;
+export default Page;
