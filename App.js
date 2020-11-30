@@ -9,7 +9,7 @@ import { createDrawerNavigator } from "@react-navigation/drawer";
 const Drawer = createDrawerNavigator();
 import SettingsComponent from "./components/Settings/SettingsComponent";
 import AboutComponent from "./components/About/AboutComponent";
-import Home from "./components/Home/Page";
+import Home from "./components/Home/MainStackNavigator";
 const App = () => {
   return (
     <NavigationContainer>

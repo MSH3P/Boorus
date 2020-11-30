@@ -44,6 +44,9 @@ const DrawerContent = (props) => {
           icon={() => {
             return <EyeOff />;
           }}
+          onPress={() => {
+            props.navigation.navigate("Viewer", { test: "hiya" });
+          }}
         />
       </DrawerContentScrollView>
       <View style={styles.footer}>
