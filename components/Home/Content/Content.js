@@ -45,7 +45,7 @@ const Content = (props) => {
             }}
             key={object.id}
           >
-            <Pressable onPress={() => alert("test")}>
+            <Pressable onPress={() => props.navigation.navigate("Viewer")}>
               <Image
                 style={styles.viewBox}
                 source={{ uri: object.thumbnail }}
@@ -57,7 +57,6 @@ const Content = (props) => {
       setData(ContentItems);
     });
   }, [props.search]);
-
   return (
     <ScrollView>
       <View

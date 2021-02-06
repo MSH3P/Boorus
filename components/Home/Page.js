@@ -7,14 +7,14 @@ const Stack = createStackNavigator();
 import Content from "./Content/Content";
 import Footer from "./Footer/Footer/";
 import Navigation from "./Header/Navigation";
-Navigation;
+
 const Page = ({ navigation }) => {
   const [search, setSearch] = useState("");
 
   return (
     <SafeAreaView style={styles.container}>
       <Navigation navigation={navigation} setSearch={setSearch} />
-      <Content search={search} />
+      <Content navigation={navigation} search={search} />
       <Footer />
     </SafeAreaView>
   );
