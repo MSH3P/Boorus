@@ -18,7 +18,11 @@ const getContent = (search) => {
     .then((response) => response.json())
     .then((json) => {
       return json.map((objects) => {
-        return { thumbnail: objects.preview_url, id: objects.id };
+        return {
+          thumbnail: objects.preview_url,
+          id: objects.id,
+          source_image: objects.file_url,
+        };
       });
     })
     .catch((error) => {
@@ -45,7 +49,13 @@ const Content = (props) => {
             }}
             key={object.id}
           >
-            <Pressable onPress={() => props.navigation.navigate("Viewer")}>
+            <Pressable
+              onPress={() =>
+                props.navigation.navigate("Viewer", {
+                  item: object.source_image,
+                })
+              }
+            >
               <Image
                 style={styles.viewBox}
                 source={{ uri: object.thumbnail }}
