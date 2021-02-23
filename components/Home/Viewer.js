@@ -16,7 +16,8 @@ const Viewer = ({ route }) => {
 
   const extension = item.substring(item.lastIndexOf("."));
 
-  if (extension == ".png" || extension == ".jpg") {
+  // image types
+  if (extension == ".png" || extension == ".jpg" || extension == ".gif") {
     return (
       <View style={styles.container}>
         <Image
@@ -27,7 +28,7 @@ const Viewer = ({ route }) => {
       </View>
     );
   }
-
+  // video
   return (
     <View style={styles.container}>
       <Video
