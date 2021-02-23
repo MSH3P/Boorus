@@ -22,6 +22,8 @@ const getContent = (search) => {
           thumbnail: objects.preview_url,
           id: objects.id,
           source_image: objects.file_url,
+          source_width: objects.jpeg_width,
+          source_height: objects.jpeg_height,
         };
       });
     })
@@ -53,6 +55,8 @@ const Content = (props) => {
               onPress={() =>
                 props.navigation.navigate("Viewer", {
                   item: object.source_image,
+                  width: object.source_width,
+                  height: object.source_height,
                 })
               }
             >
