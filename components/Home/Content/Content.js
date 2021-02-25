@@ -1,13 +1,6 @@
 import React, { useState, useEffect } from "react";
-import {
-  StyleSheet,
-  ScrollView,
-  Text,
-  View,
-  Image,
-  Pressable,
-  useWindowDimensions,
-} from "react-native";
+import { StyleSheet, View, Image, Pressable } from "react-native";
+import { FlatList } from "react-native-gesture-handler";
 import { website, tag } from "../../../local/website";
 
 const getContent = (search) => {
@@ -19,8 +12,8 @@ const getContent = (search) => {
     .then((json) => {
       return json.map((objects) => {
         return {
+          key: objects.id,
           thumbnail: objects.preview_url,
-          id: objects.id,
           source_image: objects.file_url,
           source_width: objects.jpeg_width,
           source_height: objects.jpeg_height,
@@ -34,57 +27,47 @@ const getContent = (search) => {
 
 const Content = (props) => {
   const [data, setData] = useState("");
-  const window = useWindowDimensions();
 
   useEffect(() => {
     getContent(props.search).then((sifted) => {
-      const ContentItems = sifted.map((object) => {
-        return (
-          <View
-            style={{
-              height: 150,
-              width: 150,
-              overflow: "hidden",
-              backgroundColor: "#1c2731",
-              borderRadius: 10,
-              marginBottom: 5,
-            }}
-            key={object.id}
-          >
-            <Pressable
-              onPress={() =>
-                props.navigation.navigate("Viewer", {
-                  item: object.source_image,
-                  width: object.source_width,
-                  height: object.source_height,
-                })
-              }
-            >
-              <Image
-                style={styles.viewBox}
-                source={{ uri: object.thumbnail }}
-              />
-            </Pressable>
-          </View>
-        );
-      });
-      setData(ContentItems);
+      setData(sifted);
     });
   }, [props.search]);
+
   return (
-    <ScrollView>
-      <View
-        style={{
-          margin: 5,
-          display: "flex",
-          flexWrap: "wrap",
-          flexDirection: "row",
-          justifyContent: "space-evenly",
-        }}
-      >
-        {data || []}
-      </View>
-    </ScrollView>
+    <FlatList
+      data={data}
+      numColumns={3}
+      columnWrapperStyle={{
+        flex: 1,
+        justifyContent: "space-evenly",
+        marginTop: 5,
+      }}
+      renderItem={({ item }) => (
+        <View
+          style={{
+            height: 150,
+            width: 150,
+            backgroundColor: "#1c2731",
+            borderRadius: 10,
+            marginBottom: 7,
+          }}
+          key={item.key}
+        >
+          <Pressable
+            onPress={() =>
+              props.navigation.navigate("Viewer", {
+                item: item.source_image,
+                width: item.source_width,
+                height: item.source_height,
+              })
+            }
+          >
+            <Image style={styles.viewBox} source={{ uri: item.thumbnail }} />
+          </Pressable>
+        </View>
+      )}
+    />
   );
 };
 
@@ -100,8 +83,8 @@ const styles = StyleSheet.create({
     marginRight: 10,
   },
   viewBox: {
-    height: 150,
-    width: 150,
+    height: "100%",
+    width: "100%",
     overflow: "hidden",
     backgroundColor: "#1c2731",
     borderRadius: 10,
