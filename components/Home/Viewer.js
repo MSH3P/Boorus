@@ -39,6 +39,7 @@ const Viewer = ({ route }) => {
         useNativeControls
         resizeMode="contain"
         shouldPlay={true}
+        isLooping={true}
       />
     </View>
   );
