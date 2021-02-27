@@ -1,11 +1,14 @@
-import React, { useState, useEffect } from "react";
-import { StyleSheet, View, Image, Pressable } from "react-native";
+import React, { useState, useEffect, useRef } from "react";
+import { ActivityIndicator } from "react-native";
+import { StyleSheet, View, Image, Pressable, Text } from "react-native";
 import { FlatList } from "react-native-gesture-handler";
 import { website, tag } from "../../../local/website";
 
-const getContent = (search) => {
+const getContent = (search, page) => {
   const limit = 30;
-  const url = `${website}/post/index.json?limit=${limit}&tags=${search || tag}`;
+  const url = `${website}/post/index.json?limit=${limit}&tags=${
+    search || tag
+  }&page=${page}`;
 
   return fetch(url)
     .then((response) => response.json())
@@ -27,15 +30,28 @@ const getContent = (search) => {
 
 const Content = (props) => {
   const [data, setData] = useState("");
+  const [page, setPage] = useState(1);
+  const flatListRef = useRef(null);
 
   useEffect(() => {
-    getContent(props.search).then((sifted) => {
+    // Not a good solution
+    // flatListRef isn't initialized on first render
+    // We only need scrollToIndex when page > 1
+    if (page > 1)
+      flatListRef.current.scrollToIndex({ animated: true, index: 0 });
+
+    getContent(props.search, 1).then((sifted) => {
+      setPage(1);
       setData(sifted);
     });
   }, [props.search]);
 
   return (
     <FlatList
+      onScrollToIndexFailed={() => {
+        console.log("test");
+      }}
+      ref={flatListRef}
       data={data}
       numColumns={3}
       columnWrapperStyle={{
@@ -43,30 +59,44 @@ const Content = (props) => {
         justifyContent: "space-evenly",
         marginTop: 5,
       }}
-      renderItem={({ item }) => (
-        <View
-          style={{
-            height: 150,
-            width: 150,
-            backgroundColor: "#1c2731",
-            borderRadius: 10,
-            marginBottom: 7,
-          }}
-          key={item.key}
-        >
-          <Pressable
-            onPress={() =>
-              props.navigation.navigate("Viewer", {
-                item: item.source_image,
-                width: item.source_width,
-                height: item.source_height,
-              })
-            }
-          >
-            <Image style={styles.viewBox} source={{ uri: item.thumbnail }} />
-          </Pressable>
+      ListFooterComponent={
+        <View>
+          <ActivityIndicator size="small" color="white" />
         </View>
-      )}
+      }
+      onEndReached={() => {
+        getContent(props.search, page + 1).then((sifted) => {
+          setPage(page + 1);
+          setData(data.concat(sifted));
+        });
+      }}
+      onEndReachedThreshold={0.5}
+      renderItem={({ item }) => {
+        return (
+          <View
+            style={{
+              height: 150,
+              width: 150,
+              backgroundColor: "#1c2731",
+              borderRadius: 10,
+              marginBottom: 7,
+            }}
+            key={item.key}
+          >
+            <Pressable
+              onPress={() =>
+                props.navigation.navigate("Viewer", {
+                  item: item.source_image,
+                  width: item.source_width,
+                  height: item.source_height,
+                })
+              }
+            >
+              <Image style={styles.viewBox} source={{ uri: item.thumbnail }} />
+            </Pressable>
+          </View>
+        );
+      }}
     />
   );
 };
