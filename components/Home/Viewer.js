@@ -1,46 +1,13 @@
 import React, { useState } from "react";
 
 import {} from "react-navigation";
-import {
-  SafeAreaView,
-  StyleSheet,
-  StatusBar,
-  View,
-  Text,
-  Image,
-} from "react-native";
+import { StyleSheet, View, Image } from "react-native";
 import { Video, AVPlaybackStatus } from "expo-av";
-
+import MediaContainer from "./Media/MediaContainer";
 const Viewer = ({ route }) => {
-  const { item, width, height } = route.params;
-
-  const extension = item.substring(item.lastIndexOf("."));
-
-  // image types
-  if (extension == ".png" || extension == ".jpg" || extension == ".gif") {
-    return (
-      <View style={styles.container}>
-        <Image
-          style={styles.image}
-          source={{ uri: item }}
-          resizeMode="contain"
-        />
-      </View>
-    );
-  }
-  // video
   return (
     <View style={styles.container}>
-      <Video
-        style={styles.video}
-        source={{
-          uri: item,
-        }}
-        useNativeControls
-        resizeMode="contain"
-        shouldPlay={true}
-        isLooping={true}
-      />
+      <MediaContainer route={route} />
     </View>
   );
 };
