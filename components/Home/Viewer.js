@@ -1,13 +1,16 @@
 import React, { useState } from "react";
 
 import {} from "react-navigation";
-import { StyleSheet, View, Image } from "react-native";
-import { Video, AVPlaybackStatus } from "expo-av";
+import { StyleSheet, View } from "react-native";
 import MediaContainer from "./Media/MediaContainer";
-const Viewer = ({ route }) => {
+import ViewerFooter from "./Footer/ViewerFooter";
+import ViewerHeader from "./Header/ViewerHeader";
+const Viewer = ({ route, navigation }) => {
   return (
     <View style={styles.container}>
+      <ViewerHeader navigation={navigation} />
       <MediaContainer route={route} />
+      <ViewerFooter />
     </View>
   );
 };
@@ -17,16 +20,6 @@ const styles = StyleSheet.create({
     color: "red",
     alignContent: "center",
     backgroundColor: "#0E1419",
-  },
-  video: {
-    alignSelf: "center",
-    width: "100%",
-    height: "100%",
-  },
-  image: {
-    alignSelf: "center",
-    width: "100%",
-    height: "100%",
   },
 });
 
